@@ -12,9 +12,10 @@ export const getCurrentPosition:getCurrentPositionType = (state:RootState) => {
     return state.initilized.currentLocation
 }
 
-
-
 export const getCurrentHour = (state:RootState) => {
     return state.initilized.currentHour
 }
 
+export const getPossitionError = (state:RootState) => {
+    return state.initilized.positionErrors
+}

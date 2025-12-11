@@ -2,17 +2,21 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { setCurrentForecastCreator } from "./foreCastReducer";
 import type { AppDispatchType } from "./store";
 
-
+// Типы
 interface initiazedAppActionType {
     userCoordinates: PositionType
     hour: number
+    
 }
-
 interface InitilizedStateType {
     currentLocation: PositionType
     initialazed: boolean
-    positionErrors: string | null
+    positionErrors: positionErrorsType
     currentHour: number | null
+}
+export interface PositionType {
+    lat: number | undefined
+    lan: number | undefined
 }
 
 const initialState: InitilizedStateType = {
@@ -22,11 +26,8 @@ const initialState: InitilizedStateType = {
     currentHour: null,
 }
 
-export interface PositionType {
-    lat: number | undefined
-    lan: number | undefined
-}
-
+export type positionErrorsType = null | string
+//Редъюссер
 const initilizedReducer = createSlice({
     name: 'initilizedReducer',
     initialState,
@@ -38,10 +39,12 @@ const initilizedReducer = createSlice({
         },
         setPositionError(state: InitilizedStateType, action: PayloadAction<string>) {
             state.positionErrors = action.payload
-        }
+        },
+
     }
 })
 
+// Санка
 export const initiazedAppCreator = () => {
     return async (dispatch: AppDispatchType) => {
         try {
@@ -63,8 +66,17 @@ export const initiazedAppCreator = () => {
             }));
             
         } catch (error) {
-            const errorMessage = error instanceof Error ? error.message : 'Не получилось узнать где ты';
-            dispatch(initilizedReducer.actions.setPositionError(errorMessage));
+            const userCoordinates:PositionType = {
+                lat: 55.75, 
+                lan: 37.617 
+            }
+            const hour = new Date().getHours();
+
+            await dispatch(setCurrentForecastCreator(userCoordinates));
+            dispatch(initiazedApp({ 
+                userCoordinates, 
+                hour 
+            }));
         }
     }
 }

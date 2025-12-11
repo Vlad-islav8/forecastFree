@@ -2,46 +2,53 @@ import styled from 'styled-components'
 import Header from './Header/Header'
 import Main from './Main/Main'
 import Footer from './Footer/Footer'
-import {getCurrentPosition, getinitialazedApp } from './redux/selectors/initialazedSelectors'
+import { getCurrentPosition, getinitialazedApp, getPossitionError } from './redux/selectors/initialazedSelectors'
 import { useSelector } from 'react-redux'
 import Loader from './Loader/Loader'
 import { useEffect, type FC } from 'react'
 import { useAppDispatch } from './redux/store'
-import { initiazedAppCreator, type PositionType, } from './redux/initilizedReducer'
+import { initiazedAppCreator, type positionErrorsType, type PositionType, } from './redux/initilizedReducer'
 import type { DateTime } from './utils/UNIXConverter'
 import { getCurrentBgUrl, getDate } from './redux/selectors/foreCasteSelects'
 
+
 export const AppContainer = () => {
+  // Получаем нужные данные
   const initialazed: boolean = useSelector(getinitialazedApp)
-  const crd:PositionType = useSelector(getCurrentPosition)
+  const crd: PositionType = useSelector(getCurrentPosition)
   const dateTime: DateTime = useSelector(getDate)
   const hour: number | null = dateTime.time.hour
   const bgUrl = useSelector(getCurrentBgUrl)
-
+  const positionErrors:positionErrorsType = useSelector(getPossitionError)
   const dispatch = useAppDispatch()
+  // инициализируем приложеие
   useEffect(() => {
     dispatch(initiazedAppCreator())
-  }, [])
-  
+  }, [dispatch])
+
+
   return <App
     initialazed={initialazed}
     crd={crd}
     dateTime={dateTime}
     hour={hour}
     bgUrl={bgUrl}
+    positionErrors={positionErrors}
   />
 }
 
+// Типы пропсов для App
 interface AppPropsType {
   initialazed: boolean
   crd: PositionType
   dateTime: DateTime
   hour: number
   bgUrl: string
+  positionErrors: positionErrorsType
 }
 
+const App: FC<AppPropsType> = ({ initialazed, bgUrl, positionErrors }) => {
 
-const App: FC<AppPropsType> = ({ initialazed, bgUrl }) => {
   const AppStyle = styled.div`
   border: 0 2px 0 2px solid black;
   max-height: 100vh;
@@ -68,21 +75,20 @@ const App: FC<AppPropsType> = ({ initialazed, bgUrl }) => {
   flex-direction: column;
   justify-content: space-between;
 `
-  return (
-    <>
-      {
-        initialazed ?
-          <AppStyle>
-            <Container>
-              <Header />
-              <Main />
-              <Footer />
-            </Container>
-          </AppStyle> :
-          <Loader />
-      }
-    </>
-  )
+
+  if (initialazed) {
+    return (
+      <AppStyle>
+        <Container>
+          <Header />
+          <Main />
+          <Footer />
+        </Container>
+      </AppStyle>
+    )
+  } else {
+    return <Loader />
+  }
 }
 
 export default App
