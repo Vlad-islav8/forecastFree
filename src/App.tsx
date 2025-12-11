@@ -67,23 +67,13 @@ const App: FC<AppPropsType> = ({ initialazed, bgUrl, positionErrors }) => {
     z-index: -1;
   }
 `
-  const Container = styled.div`
-  max-width: 85%;
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`
 
   if (initialazed) {
     return (
       <AppStyle>
-        <Container>
           <Header />
           <Main />
           <Footer />
-        </Container>
       </AppStyle>
     )
   } else {

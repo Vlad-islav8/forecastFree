@@ -116,7 +116,6 @@ export const setCurrentForecastCreator = (position:PositionType) => {
         const { lat, lan } = position
         if (lat && lan) {
             const forecast = await getCurrentForecastAPI.getForecast(lat, lan)
-            debugger
             const Setforecast: ForecastType = {
                 currentForecast: forecast.main.temp,
                 description: forecast.weather[0].description,

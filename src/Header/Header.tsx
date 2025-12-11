@@ -139,6 +139,7 @@ const Header = () => {
     const foreCastIconId: string = useSelector(getForeCastIconId)
     const iconUrl = foreCastIconUrl + foreCastIconId + '@2x.png'
     const dateTime: DateTime = useSelector(getDate)
+    debugger
     return (
         <HeaderS>
             <City>{city}</City>

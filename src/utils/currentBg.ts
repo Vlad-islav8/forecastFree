@@ -10,7 +10,6 @@ import morning2 from '../img/landscape/morning2.jpg'
 type currentBgType = (hour:number) => string
 
 const currentBg:currentBgType = (hour:number) => {
-    debugger
     const randomCurrent:number = Math.round(Math.random() * 10)
  
     if(hour >= 6 && hour <= 12) {
