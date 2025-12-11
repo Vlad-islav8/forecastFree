@@ -1,9 +1,11 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
+const REPO_NAME = "forecastFree"
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/forecastfree/', 
+  base: `/${REPO_NAME}/`, 
 })
 
