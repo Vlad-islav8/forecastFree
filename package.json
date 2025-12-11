@@ -1,6 +1,6 @@
 {
-  "homepage": "https://Vlad-islav8.github.io/Weather-forecast",
-  "name": "weather-forecast",
+  "homepage": "https://Vlad-islav8.github.io/forecastFree",
+  "name": "forecastfree",
   "private": true,
   "version": "1.0.2",
   "type": "module",
@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.9.0",
