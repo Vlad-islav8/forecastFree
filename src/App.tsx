@@ -2,12 +2,12 @@ import styled from 'styled-components'
 import Header from './Header/Header'
 import Main from './Main/Main'
 import Footer from './Footer/Footer'
-import { getCurrentPosition, getinitialazedApp, getPossitionError } from './redux/selectors/initialazedSelectors'
+import { getCurrentPosition, getinitialazedApp, } from './redux/selectors/initialazedSelectors'
 import { useSelector } from 'react-redux'
 import Loader from './Loader/Loader'
 import { useEffect, type FC } from 'react'
 import { useAppDispatch } from './redux/store'
-import { initiazedAppCreator, type positionErrorsType, type PositionType, } from './redux/initilizedReducer'
+import { initiazedAppCreator, type PositionType, } from './redux/initilizedReducer'
 import type { DateTime } from './utils/UNIXConverter'
 import { getCurrentBgUrl, getDate } from './redux/selectors/foreCasteSelects'
 
@@ -19,7 +19,6 @@ export const AppContainer = () => {
   const dateTime: DateTime = useSelector(getDate)
   const hour: number | null = dateTime.time.hour
   const bgUrl = useSelector(getCurrentBgUrl)
-  const positionErrors:positionErrorsType = useSelector(getPossitionError)
   const dispatch = useAppDispatch()
   // инициализируем приложеие
   useEffect(() => {
@@ -33,7 +32,6 @@ export const AppContainer = () => {
     dateTime={dateTime}
     hour={hour}
     bgUrl={bgUrl}
-    positionErrors={positionErrors}
   />
 }
 
@@ -44,10 +42,9 @@ interface AppPropsType {
   dateTime: DateTime
   hour: number
   bgUrl: string
-  positionErrors: positionErrorsType
 }
 
-const App: FC<AppPropsType> = ({ initialazed, bgUrl, positionErrors }) => {
+const App: FC<AppPropsType> = ({ initialazed, bgUrl, }) => {
 
   const AppStyle = styled.div`
   border: 0 2px 0 2px solid black;
