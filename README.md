@@ -1,69 +1,55 @@
-# React + TypeScript + Vite
+ 🚀 О проекте
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+forecastFree — это интерактивное веб-приложение, разработанное для удобного просмотра и погоды по всему миру.
 
-Currently, two official plugins are available:
+ ✨ Основные возможности
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+•  Определения местоположения пользователя(с его согласия) в случая блокровки данных о местоположении функционал не меняется, приложение просто подставит Москву как стартовое значение
+•  Имеет приятный и понятный интерфейс
+•  Имеет возможность автомотически менять фон приложения в зависимости от времени суток
 
-## Expanding the ESLint configuration
+ 🛠️ Технологии и Стек
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Проект построен с использованием современного стека фронтенд-технологий:
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+•  React 18: Библиотека для создания пользовательских интерфейсов.
+•  TypeScript: Строгая типизация для повышения надежности и поддержки кода.
+•  Redux Toolkit (RTK): Эффективное управление состоянием приложения с createSlice и createAsyncThunk.
+•  API: OpenWeatherMap - бесплатная апи, дает возможность получать реальные данные по погоде в реальном времени
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+ 🚀 Как запустить проект локально
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Чтобы запустить это приложение на вашем компьютере, выполните следующие шаги:
+
+1. Клонируйте репозиторий:
+  
+```
+bash
+  git clone https://github.com/Vlad-islav8/forecastFree.git
+  cd avtoMob
+
+2. Установите зависимости:
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+bash
+  npm install # или yarn install
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+
+3. Запустите проект:
+  
+```
+bash
+  npm start # или yarn start
+
+```
+  Приложение будет доступно по адресу http://localhost:3000 (или другому порту, указанному в консоли).
+
+ 🤝 Контакты
+
+Если у вас есть вопросы или предложения, или вы просто хотите связаться со мной, вы можете найти меня здесь:
+
+•  GitHub: https://github.com/Vlad-islav8
+•  Email: vladfedevg@gmail.com
+•  (Опционально) Telegram: @mylitlezummer
